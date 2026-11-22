@@ -1,0 +1,64 @@
+@BackendPractice_HostAddress = http://localhost:5005
+
+### 1. Create a Zone
+POST {{BackendPractice_HostAddress}}/api/zones
+Content-Type: application/json
+
+{
+  "name": "North Feeder Zone",
+  "code": "ZONE-N01",
+  "description": "Primary northern distribution zone"
+}
+
+### 2. Get All Zones
+GET {{BackendPractice_HostAddress}}/api/zones
+Accept: application/json
+
+### 3. Get Zone by ID (includes Users and Meters)
+GET {{BackendPractice_HostAddress}}/api/zones/1
+Accept: application/json
+
+### 4. Create a User in Zone 1
+POST {{BackendPractice_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Santosh Saw",
+  "email": "santosh@example.com",
+  "phoneNumber": "+91-9876543210",
+  "address": "123 Smart Grid St",
+  "zoneId": 1
+}
+
+### 5. Get All Users
+GET {{BackendPractice_HostAddress}}/api/users
+Accept: application/json
+
+### 6. Create a Meter (Assigned to Zone 1 and User 1)
+POST {{BackendPractice_HostAddress}}/api/meters
+Content-Type: application/json
+
+{
+  "serialNumber": "MTR-2026-00101",
+  "meterType": "Smart",
+  "status": "Active",
+  "zoneId": 1,
+  "userId": 1
+}
+
+### 7. Get All Meters (includes Zone and User details)
+GET {{BackendPractice_HostAddress}}/api/meters
+Accept: application/json
+
+### 8. Update Meter Status
+PUT {{BackendPractice_HostAddress}}/api/meters/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "serialNumber": "MTR-2026-00101",
+  "meterType": "Smart",
+  "status": "Inactive",
+  "zoneId": 1,
+  "userId": 1
+}
