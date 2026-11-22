@@ -32,6 +32,5 @@ bld/
 *.launch
 
 ## Secrets and local configurations
-# Uncomment below if you do not want to push appsettings with your database password:
-# appsettings.Development.json
-# appsettings.json
+appsettings.Development.json
+appsettings.json
